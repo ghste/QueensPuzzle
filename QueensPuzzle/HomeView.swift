@@ -34,7 +34,7 @@ struct HomeView: View {
             
             NavigationLink(
                 destination: {
-                    // TODO: Build Game View
+                    GameView(viewModel: GameViewModel(size: selectedBoardSize))
                 },
                 label: {
                     Text("Start Game")
