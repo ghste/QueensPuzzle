@@ -14,4 +14,6 @@ final class GameViewModel: ObservableObject {
     init(size: Int) {
         self.size = size
     }
+        
+    func reset() {}
 }

@@ -12,13 +12,18 @@ struct GameView: View {
     
     var body: some View {
         VStack {
+                      
+            BoardView(
+                size: viewModel.size
+            )
             
-            Text("Size: \(viewModel.size)")
-             
-            Button("Reset") { }
+            Button("Reset") {
+                viewModel.reset()
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationTitle("Board")
+ 
     }
 }
 
