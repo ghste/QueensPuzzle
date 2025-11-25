@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var selectedBoardSize: Int = 6
+
+    private let minBoardSize = 4
+    private let maxBoardSize = 9
     
     var body: some View {
         VStack(spacing: 32) {
@@ -21,7 +24,7 @@ struct HomeView: View {
                     .font(.headline)
                 
                 Picker("Board size", selection: $selectedBoardSize) {
-                    ForEach(4...50, id: \.self) { size in
+                    ForEach(minBoardSize...maxBoardSize, id: \.self) { size in
                         Text("\(size) x \(size)").tag(size)
                     }
                 }
@@ -35,6 +38,12 @@ struct HomeView: View {
                 },
                 label: {
                     Text("Start Game")
+                        .font(.title3.bold())
+                        .padding(.vertical, 14)
+                        .padding(.horizontal, 40)
+                        .background(.blue)
+                        .foregroundColor(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             )
             .padding(.top, 12)
