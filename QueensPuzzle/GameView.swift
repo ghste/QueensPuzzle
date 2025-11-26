@@ -45,9 +45,17 @@ struct GameView: View {
         }
         .overlay {
             if viewModel.hasWon {
-                Text("YOU WON!!!")
+                WinScreen {
+                    viewModel.reset()
+                    dismiss()
+                }
+                .transition(.opacity.animation(.easeInOut(duration: 0.6)))
             }
         }
     }
+}
+
+#Preview {
+    GameView(viewModel: GameViewModel(size: 4))
 }
 
