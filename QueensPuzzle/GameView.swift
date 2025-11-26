@@ -9,12 +9,21 @@ import SwiftUI
 
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack {
-                      
+            
+            Text("Queens: \(viewModel.size)")
+            
             BoardView(
-                size: viewModel.size
+                size: viewModel.size,
+                cellState: { pos in
+                    viewModel.cellState(at: pos)
+                },
+                onTap: { pos in
+                    viewModel.handleTap(pos)
+                }
             )
             
             Button("Reset") {
