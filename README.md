@@ -15,7 +15,7 @@ A SwiftUI implementation of the classic N-Queens puzzle, where the goal is to pl
 * Board sizes from 4 to 9
 
     * `<4` has no valid N-Queens solutions
-    * `>9` above 9×9, the tiles shrink below Apple’s 44pt minimum tap target, making the board hard to use on an iPhone
+    * `>9` above 9×9, the tiles shrink below Apple’s guideline of 44pt minimum tap target, making the board hard to use on an iPhone
 
 * Tap to add/remove queens
 
