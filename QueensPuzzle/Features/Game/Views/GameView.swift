@@ -14,10 +14,10 @@ struct GameView: View {
     var body: some View {
         VStack {
             
-            Text("Queens left: \(viewModel.size - viewModel.queens.count)")
+            Text("Queens left: \(viewModel.queensLeft())")
             
             BoardView(
-                size: viewModel.size,
+                size: viewModel.boardSize(),
                 cellState: { pos in
                     viewModel.cellState(at: pos)
                 },
