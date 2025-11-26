@@ -14,7 +14,7 @@ struct GameView: View {
     var body: some View {
         VStack {
             
-            Text("Queens: \(viewModel.size)")
+            Text("Queens left: \(viewModel.size - viewModel.queens.count)")
             
             BoardView(
                 size: viewModel.size,
@@ -32,7 +32,6 @@ struct GameView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationTitle("Board")
- 
     }
 }
 
