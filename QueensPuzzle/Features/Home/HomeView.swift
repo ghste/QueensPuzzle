@@ -10,7 +10,13 @@ import SwiftUI
 struct HomeView: View {
     @State private var selectedBoardSize: Int = 6
 
+    // Minimum valid N-Queens size.
+    // Boards smaller than 4×4 have no possible solutions.
     private let minBoardSize = 4
+    
+    // Upper bound chosen for practical usability.
+    // Larger boards still work logically, but they reduce tap targets below Apple’s 44pt guideline
+    // and make the UI difficult to interact with on iPhone screens.
     private let maxBoardSize = 9
     
     var body: some View {

@@ -4,17 +4,24 @@
 //
 //  Created by Gheorghe Stegaru on 11/26/25.
 //
+//  Responsible for all N-Queens domain logic:
+//  - tracking queen positions
+//  - determining conflicts
+//  - evaluating win state
+//  This class is pure logic and UI-agnostic.
+//
 
 class NQueensEngine {
     let boardSize: Int
     private var conflicts: Set<Position> = []
-    var queens: Set<Position> = []
+    private(set) var queens: Set<Position> = []
 
     init(boardSize: Int) {
         self.boardSize = boardSize
     }
 
     private func areInConflict(_ a: Position, _ b: Position) -> Bool {
+        // Queens attack horizontally, vertically, or diagonally.
         // same row
         if a.row == b.row { return true }
         
@@ -43,14 +50,17 @@ class NQueensEngine {
     }
 
     func updateQueenPosition(at pos: Position) {
+        // prevent out-of-bounds positions
+        guard pos.row >= 0,
+              pos.col >= 0,
+              max(pos.row, pos.col) < boardSize else {
+            return
+        }
+
         if queens.contains(pos) {
-            // Remove queen
             queens.remove(pos)
-        } else {
-            // Add queen
-            if queens.count < boardSize {
-                queens.insert(pos)
-            }
+        } else if queens.count < boardSize {
+            queens.insert(pos)
         }
         
         updateConflicts()
