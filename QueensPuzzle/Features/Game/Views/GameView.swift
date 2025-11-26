@@ -36,8 +36,7 @@ struct GameView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    viewModel.reset()
-                    dismiss()
+                    dismissScreen()
                 } label: {
                     Image(systemName: "chevron.left")
                 }
@@ -46,12 +45,16 @@ struct GameView: View {
         .overlay {
             if viewModel.hasWon {
                 WinScreen {
-                    viewModel.reset()
-                    dismiss()
+                    dismissScreen()
                 }
                 .transition(.opacity.animation(.easeInOut(duration: 0.6)))
             }
         }
+    }
+    
+    func dismissScreen() {
+        viewModel.reset()
+        dismiss()
     }
 }
 
