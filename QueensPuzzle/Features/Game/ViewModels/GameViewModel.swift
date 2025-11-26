@@ -10,10 +10,10 @@ import SwiftUI
 final class GameViewModel: ObservableObject {
     @Published var hasWon: Bool = false
 
-    let gameEngine: NQueensEngine
-    
-    init(size: Int, gameEngine: NQueensEngine? = nil) {
-        self.gameEngine = gameEngine ?? NQueensEngine(boardSize: size)
+    let gameEngine: NQueensEngineProtocol
+
+    init(gameEngine: NQueensEngineProtocol) {
+        self.gameEngine = gameEngine
     }
     
     func handleTap(_ pos: Position) {

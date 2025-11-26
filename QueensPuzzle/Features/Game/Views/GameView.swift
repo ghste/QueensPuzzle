@@ -56,6 +56,8 @@ struct GameView: View {
 }
 
 #Preview {
-    GameView(viewModel: GameViewModel(size: 4))
+    let engine = NQueensEngine(boardSize: 4)
+    let viewModel = GameViewModel(gameEngine: engine)
+    GameView(viewModel: viewModel)
 }
 

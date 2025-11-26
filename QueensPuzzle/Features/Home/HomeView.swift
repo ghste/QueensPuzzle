@@ -40,7 +40,9 @@ struct HomeView: View {
             
             NavigationLink(
                 destination: {
-                    GameView(viewModel: GameViewModel(size: selectedBoardSize))
+                    let engine = NQueensEngine(boardSize: selectedBoardSize)
+                    let viewModel = GameViewModel(gameEngine: engine)
+                    GameView(viewModel: viewModel)
                 },
                 label: {
                     Text("Start Game")

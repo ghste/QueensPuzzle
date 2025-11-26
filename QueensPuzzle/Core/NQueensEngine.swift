@@ -11,7 +11,18 @@
 //  This class is pure logic and UI-agnostic.
 //
 
-class NQueensEngine {
+protocol NQueensEngineProtocol {
+    var boardSize: Int { get }
+    var queens: Set<Position> { get }
+    
+    func updateQueenPosition(at pos: Position)
+    func isSolved() -> Bool
+    func hasQueen(at pos: Position) -> Bool
+    func hasConflict(pos: Position) -> Bool
+    func reset()
+}
+
+class NQueensEngine: NQueensEngineProtocol {
     let boardSize: Int
     private var conflicts: Set<Position> = []
     private(set) var queens: Set<Position> = []
